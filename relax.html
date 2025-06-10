@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relaxation Places in India</title>
+    <style>
+        /* Reset styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #053b2e;
+            color: #E1EAD9;
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid #0C7A6F;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #D9F2E6;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #BFD3C6;
+        }
+
+        /* Container styling */
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Card styling */
+        .relaxation-card {
+            background-color: #0A675F;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .relaxation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .relaxation-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .relaxation-details {
+            padding: 1.5rem;
+        }
+
+        .relaxation-title {
+            font-size: 1.8rem;
+            color: #D9F2E6;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .relaxation-meta,
+        .relaxation-description {
+            font-size: 1rem;
+            color: #E1EAD9;
+            margin-bottom: 1rem;
+        }
+
+        .relaxation-meta span {
+            display: inline-block;
+            margin-right: 10px;
+            color: #BFD3C6;
+        }
+
+        .relaxation-price {
+            font-size: 1.3rem;
+            color: #D9F2E6;
+            font-weight: bold;
+        }
+
+        .relaxation-highlight {
+            color: #E1EAD9;
+            font-weight: bold;
+        }
+
+        /* Map styling */
+        .map {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        /* Responsive font and layout adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .relaxation-title {
+                font-size: 1.4rem;
+            }
+
+            .relaxation-price {
+                font-size: 1.1rem;
+            }
+
+            header p,
+            .relaxation-meta,
+            .relaxation-description {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Relaxation Retreats in India</h1>
+        <p>Experience Peace and Serenity</p>
+    </header>
+
+    <div class="container">
+        <!-- Goa Beaches Card -->
+        <div class="relaxation-card">
+            <img src="assets/goabeach.jpeg" alt="Goa Beaches" style="height: 200px; object-fit: cover;">
+            <div class="relaxation-details">
+                <h2 class="relaxation-title">Goa Beaches</h2>
+                <div class="relaxation-meta">
+                    <span><strong>Location:</strong> Goa, India</span>
+                    <span><strong>Duration:</strong> 3-4 days</span>
+                </div>
+                <p class="relaxation-description">
+                    Relax on the pristine beaches of Goa, with soft golden sands, clear blue waters, and vibrant nightlife.
+                </p>
+                <div id="map1" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Coorg – Coffee Plantations Card -->
+        <div class="relaxation-card">
+            <img src="assets/coorgecoffie.jpg" alt="Coorg Coffee Plantations" style="height: 200px; object-fit: cover;">
+            <div class="relaxation-details">
+                <h2 class="relaxation-title">Coorg – Coffee Plantations</h2>
+                <div class="relaxation-meta">
+                    <span><strong>Location:</strong> Coorg, Karnataka, India</span>
+                    <span><strong>Duration:</strong> 2 days</span>
+                </div>
+                <p class="relaxation-description">
+                    Escape to the lush coffee plantations of Coorg, known for its scenic beauty and calm environment.
+                </p>
+                <div id="map2" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Kerala Backwaters Card -->
+        <div class="relaxation-card">
+            <img src="assets/alleppeykerala.jpg" alt="Kerala Backwaters" style="height: 200px; object-fit: cover;">
+            <div class="relaxation-details">
+                <h2 class="relaxation-title">Alleppey – Kerala Backwaters</h2>
+                <div class="relaxation-meta">
+                    <span><strong>Location:</strong> Alleppey, Kerala, India</span>
+                    <span><strong>Duration:</strong> 2-3 days</span>
+                </div>
+                <p class="relaxation-description">
+                    Experience a serene houseboat ride in Kerala's tranquil backwaters, surrounded by lush green landscapes.
+                </p>
+                <div id="map3" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Udaipur Lakes and Palaces Card -->
+        <div class="relaxation-card">
+            <img src="assets/udaipurlake.jpeg" alt="Udaipur Lakes and Palaces" style="height: 200px; object-fit: cover;">
+            <div class="relaxation-details">
+                <h2 class="relaxation-title">Udaipur – Lakes and Palaces</h2>
+                <div class="relaxation-meta">
+                    <span><strong>Location:</strong> Udaipur, Rajasthan, India</span>
+                    <span><strong>Duration:</strong> 2 days</span>
+                </div>
+                <p class="relaxation-description">
+                    Explore the calm lakes and majestic palaces of Udaipur, offering a peaceful and historic atmosphere.
+                </p>
+                <div id="map4" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Rishikesh Yoga Retreats Card -->
+        <div class="relaxation-card">
+            <img src="assets/yogarishikesh.jpeg" alt="Rishikesh Yoga Retreats" style="height: 200px; object-fit: cover;">
+            <div class="relaxation-details">
+                <h2 class="relaxation-title">Rishikesh – Yoga Retreats</h2>
+                <div class="relaxation-meta">
+                    <span><strong>Location:</strong> Rishikesh, Uttarakhand, India</span>
+                    <span><strong>Duration:</strong> 3-5 days</span>
+                </div>
+                <p class="relaxation-description">
+                    Rishikesh is a hub for yoga and wellness, offering spiritual retreats and peaceful meditation spots.
+                </p>
+                <div id="map5" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Manali Mountain Retreats Card -->
+<div class="relaxation-card">
+    <img src="assets/mountainmanali.jpeg" alt="Manali Mountain Retreats" style="height: 200px; object-fit: cover;">
+    <div class="relaxation-details">
+        <h2 class="relaxation-title">Manali – Mountain Retreats</h2>
+        <div class="relaxation-meta">
+            <span><strong>Location:</strong> Manali, Himachal Pradesh, India</span>
+            <span><strong>Duration:</strong> 3-4 days</span>
+        </div>
+        <p class="relaxation-description">
+            Nestled in the mountains, Manali offers a peaceful retreat amidst snow-capped peaks, lush valleys, and serene landscapes.
+        </p>
+        <div id="map6" class="map"></div>
+    </div>
+</div>
+    </div>
+
+    <!-- Google Maps API -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAQKfyvLqPET4bemv12H1J92jOnS0-DyA&callback=initMap">
+</script>
+
+<script>
+    function initMap() {
+        const locations = [
+            { id: 'map1', coords: { lat: 15.2993, lng: 74.1240 } }, // Goa Beaches
+            { id: 'map2', coords: { lat: 12.4260, lng: 75.7382 } }, // Coorg – Coffee Plantations
+            { id: 'map3', coords: { lat: 9.4981, lng: 76.3388 } },  // Alleppey – Kerala Backwaters
+            { id: 'map4', coords: { lat: 24.5854, lng: 73.7125 } }, // Udaipur – Lakes and Palaces
+            { id: 'map5', coords: { lat: 30.0869, lng: 78.2676 } }, // Rishikesh – Yoga Retreats
+            { id: 'map6', coords: { lat: 32.2432, lng: 77.1892 } }, // Manali – Mountain Retreats
+        ];
+
+        locations.forEach(loc => {
+            const map = new google.maps.Map(document.getElementById(loc.id), {
+                zoom: 10,
+                center: loc.coords
+            });
+            new google.maps.Marker({
+                position: loc.coords,
+                map: map
+            });
+        });
+    }
+</script>
+</body>
+
+</html>

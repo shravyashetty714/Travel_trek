@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TravelTrek</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Color Palette */
+        :root {
+            --primary-color: #6a7c7a;
+            --secondary-color: #c4ddde;
+            --tertiary-color: #115955;
+            --accent-color: #0A675F;
+            --highlight-color: #0C7A6F;
+            --background-color: #7C916C;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--highlight-color) !important;
+        }
+
+        /* Register Section */
+        .register-section {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .register-section h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: rgb(211, 231, 211);
+        }
+
+        .form-control {
+            border-radius: 30px;
+            font-size: 1rem;
+            padding: 10px 20px;
+        }
+
+        .btn-primary {
+            background-color: var(--tertiary-color);
+            border: none;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 12px;
+            font-size: 1.2rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--highlight-color);
+        }
+
+        .form-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .text-center a {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .text-center a:hover {
+            color: var(--highlight-color);
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: rgb(4, 98, 45);
+            padding: 20px 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Form Container */
+        .register-form-container {
+            background-color: rgb(3, 92, 52);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Register Form Section -->
+<div class="register-section">
+    <div class="register-form-container">
+        <h2 class="text-center mb-4">Register</h2>
+        <form action="register.php" method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+        <p class="text-center mt-3">Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

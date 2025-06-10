@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Website</title>
+    <style>
+    /* Reset styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Dark green base color */
+    color: #E1EAD9; /* Light color for readability */
+    line-height: 1.6;
+}
+
+/* Header styling */
+header {
+    background-color: #053b2e; /* Dark teal */
+    color: #E1EAD9; /* Light color */
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #0C7A6F; /* Accent color */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #D9F2E6; /* Primary highlight */
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #BFD3C6; /* Subtle lighter color */
+}
+
+/* Container styling */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Card styling */
+.adventure-card {
+    background-color: #0A675F; /* Dark green-blue */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.adventure-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.adventure-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.adventure-details {
+    padding: 1.5rem;
+}
+
+.adventure-title {
+    font-size: 1.8rem;
+    color: #D9F2E6; /* Light color */
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.adventure-meta,
+.adventure-description {
+    font-size: 1rem;
+    color: #E1EAD9; /* Light color for better contrast */
+    margin-bottom: 1rem;
+}
+
+.adventure-meta span {
+    display: inline-block;
+    margin-right: 10px;
+    color: #BFD3C6; /* Muted lighter green for meta text */
+}
+
+.adventure-price {
+    font-size: 1.3rem;
+    color: #D9F2E6; /* Light price highlight */
+    font-weight: bold;
+}
+
+.adventure-highlight {
+    color: #E1EAD9; /* Accent color for highlights */
+    font-weight: bold;
+}
+
+/* Map styling */
+.map {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+/* Responsive font and layout adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .adventure-title {
+        font-size: 1.4rem;
+    }
+    
+    .adventure-price {
+        font-size: 1.1rem;
+    }
+    
+    header p,
+    .adventure-meta,
+    .adventure-description {
+        font-size: 0.9rem;
+    }
+}
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Adventure World</h1>
+        <p>Discover Your Next Adventure</p>
+    </header>
+
+    <div class="container">
+        <!-- Existing Adventure Cards -->
+        <div class="adventure-card">
+            <img src="assets/ladakh.jpeg" alt="Ladakh Biking" style="height: 200px; object-fit: cover;">
+            <div class="adventure-details">
+                <h2 class="adventure-title">Ladakh Biking</h2>
+                <div class="adventure-meta">
+                    <span><strong>Location:</strong> Ladakh, India</span>
+                    <span><strong>Duration:</strong> 10 days</span>
+                    <span><strong>Difficulty:</strong> Hard</span>
+                </div>
+                <p class="adventure-description">
+                    Experience a thrilling bike ride through the rugged mountains and valleys of Ladakh. Enjoy
+                    high-altitude adventure, breathtaking landscapes, and rich Tibetan culture.
+                </p>
+                <p class="adventure-meta">
+                    <span class="adventure-price">₹15,000</span>
+                    <span><strong>Best Season:</strong> Summer</span>
+                </p>
+                <p><span class="adventure-highlight">Highlights:</span> High-altitude passes, monasteries, Tibetan
+                    culture</p>
+                <div id="map1" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Rishikesh River Rafting Card -->
+        <div class="adventure-card">
+            <img src="assets/riverrafting.jpeg" alt="Rishikesh River Rafting" style="height: 200px; object-fit: cover;">
+            <div class="adventure-details">
+                <h2 class="adventure-title">Rishikesh River Rafting</h2>
+                <div class="adventure-meta">
+                    <span><strong>Location:</strong> Rishikesh, India</span>
+                    <span><strong>Duration:</strong> 1 day</span>x
+                    <span><strong>Difficulty:</strong> Medium</span>
+                </div>
+                <p class="adventure-description">
+                    Enjoy a thrilling river rafting experience in Rishikesh along the Ganges River, surrounded by the
+                    Himalayas. Suitable for beginners and experts alike.
+                </p>
+                <p class="adventure-meta">
+                    <span class="adventure-price">₹1,500</span>
+                    <span><strong>Best Season:</strong> Winter</span>
+                </p>
+                <p><span class="adventure-highlight">Highlights:</span> Rapids, scenic beauty, riverside camping</p>
+                <div id="map2" class="map"></div>
+            </div>
+        </div>
+        <!-- Manali Trekking Card -->
+        <div class="adventure-card">
+            <img src="assets/manalitrek.jpeg" alt="Manali Trekking" style="height: 200px; object-fit: cover;">
+            <div class="adventure-details">
+                <h2 class="adventure-title">Manali Trekking</h2>
+                <div class="adventure-meta">
+                    <span><strong>Location:</strong> Himachal Pradesh, India</span>
+                    <span><strong>Duration:</strong> 5 days</span>
+                    <span><strong>Difficulty:</strong> Moderate</span>
+                </div>
+                <p class="adventure-description">
+                    Explore the serene trails of Manali, with breathtaking views of snow-capped peaks and lush valleys.
+                    Perfect for nature enthusiasts and adventure seekers.
+                </p>
+                <p class="adventure-meta">
+                    <span class="adventure-price">₹10,000</span>
+                    <span><strong>Best Season:</strong> Spring</span>
+                </p>
+                <p><span class="adventure-highlight">Highlights:</span> Waterfalls, mountain views, and alpine flora</p>
+                <div id="map3" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Andaman Scuba Diving Card -->
+        <div class="adventure-card">
+            <img src="assets/andamanscuba.jpeg" alt="Andaman Scuba Diving" style="height: 200px; object-fit: cover;">
+            <div class="adventure-details">
+                <h2 class="adventure-title">Andaman Scuba Diving</h2>
+                <div class="adventure-meta">
+                    <span><strong>Location:</strong> Andaman & Nicobar Islands, India</span>
+                    <span><strong>Duration:</strong> 3 days</span>
+                    <span><strong>Difficulty:</strong> Easy</span>
+                </div>
+                <p class="adventure-description">
+                    Dive into the turquoise waters of the Andaman Sea and explore vibrant coral reefs teeming with
+                    marine life. A dream for underwater explorers!
+                </p>
+                <p class="adventure-meta">
+                    <span class="adventure-price">₹15,000</span>
+                    <span><strong>Best Season:</strong> Winter</span>
+                </p>
+                <p><span class="adventure-highlight">Highlights:</span> Coral reefs, marine life, and pristine beaches
+                </p>
+                <div id="map4" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Kerala Backwater Kayaking Card -->
+        <div class="adventure-card">
+            <img src="assets/keralawater.jpg" alt="Kerala Backwater Kayaking" style="height: 200px; object-fit: cover;">
+            <div class="adventure-details">
+                <h2 class="adventure-title">Kerala Backwater Kayaking</h2>
+                <div class="adventure-meta">
+                    <span><strong>Location:</strong> Alleppey, Kerala, India</span>
+                    <span><strong>Duration:</strong> 1 day</span>
+                    <span><strong>Difficulty:</strong> Easy</span>
+                </div>
+                <p class="adventure-description">
+                    Paddle through the tranquil backwaters of Kerala, surrounded by lush greenery and picturesque
+                    villages. A serene and rejuvenating experience.
+                </p>
+                <p class="adventure-meta">
+                    <span class="adventure-price">₹2,000</span>
+                    <span><strong>Best Season:</strong> Monsoon</span>
+                </p>
+                <p><span class="adventure-highlight">Highlights:</span> Mangroves, bird watching, and houseboats</p>
+                <div id="map5" class="map"></div>
+            </div>
+        </div>
+        <!-- Spiti Valley Road Trip Card -->
+        <div class="adventure-card">
+            <img src="assets/spitivalley.jpeg" alt="Spiti Valley Road Trip" style="height: 200px; object-fit: cover;">
+            <div class="adventure-details">
+                <h2 class="adventure-title">Spiti Valley Road Trip</h2>
+                <div class="adventure-meta">
+                    <span><strong>Location:</strong> Himachal Pradesh, India</span>
+                    <span><strong>Duration:</strong> 7 days</span>
+                    <span><strong>Difficulty:</strong> Challenging</span>
+                </div>
+                <p class="adventure-description">
+                    Embark on a thrilling road trip through Spiti Valley with scenic views of rugged landscapes and
+                    high-altitude monasteries.
+                </p>
+                <p class="adventure-meta">
+                    <span class="adventure-price">₹12,000</span>
+                    <span><strong>Best Season:</strong> Summer</span>
+                </p>
+                <p><span class="adventure-highlight">Highlights:</span> Monasteries, mountain passes, and scenic valleys
+                </p>
+                <div id="map6" class="map"></div>
+            </div>
+        </div>
+
+    </div>
+<!-- Load the Google Maps JavaScript API with your API key AIzaSyAAQKfyvLqPET4bemv12H1J92jOnS0-DyA -->
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAQKfyvLqPET4bemv12H1J92jOnS0-DyA&callback=initMap">
+</script>
+
+<script>
+    // Initialize the map for each adventure card
+    function initMap() {
+        const locations = [
+            { id: 'map1', coords: { lat: 34.1526, lng: 77.5770 } }, // Ladakh
+            { id: 'map2', coords: { lat: 30.0869, lng: 78.2676 } }, // Rishikesh
+            { id: 'map3', coords: { lat: 32.2432, lng: 77.1892 } }, // Manali
+            { id: 'map4', coords: { lat: 11.6670, lng: 92.7354 } }, // Andaman
+            { id: 'map5', coords: { lat: 9.4981, lng: 76.3388 } },  // Kerala
+            { id: 'map6', coords: { lat: 32.2396, lng: 78.0211 } }, // Spiti Valley
+        ];
+
+        locations.forEach(loc => {
+            const map = new google.maps.Map(document.getElementById(loc.id), {
+                zoom: 10,
+                center: loc.coords
+            });
+            new google.maps.Marker({
+                position: loc.coords,
+                map: map
+            });
+        });
+    }
+</script>
+</body>
+
+</html>

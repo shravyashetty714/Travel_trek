@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TravelTrek - Your Travel Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Maps API Script with API Key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGCvjEf4Wxf8sIx4h97EQq8p6fu3dCIns&callback=initMap" async defer></script>
+
+<script>
+function sendMessage() {
+  const input = document.getElementById("user-input");
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  const log = document.getElementById("chat-log");
+  log.innerHTML += `<p><strong>You:</strong> ${msg}</p>`;
+  
+  fetch(`/get?msg=${encodeURIComponent(msg)}`)
+    .then(res => res.json())
+    .then(data => {
+      log.innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
+      log.scrollTop = log.scrollHeight;
+    });
+
+  input.value = "";
+}
+</script>
+    <style>
+        /* Custom Color Palette */
+        :root {
+            --primary-color: #0A2F29;
+            --secondary-color: #05393B;
+            --tertiary-color: #115955;
+            --accent-color: #0A675F;
+            --highlight-color: #0C7A6F;
+            --background-color: #7C916C;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--highlight-color) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+
+        /* Explore Destinations Section */
+        #explore {
+            background-color: #ffffff;
+            padding: 50px 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .btn-primary {
+            background-color: var(--tertiary-color);
+            border: none;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--highlight-color);
+        }
+
+        /* Itinerary Section */
+        #itinerary {
+            background-color: var(--background-color);
+            color: white;
+            padding: 60px 0;
+        }
+
+        #itinerary h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        #itinerary p {
+            color: #ddd;
+        }
+
+        .text-center a {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        .text-center a:hover {
+            background-color: var(--highlight-color);
+            text-decoration: none;
+        }
+
+        /* Booking Section */
+        #book {
+            background-color: #ffffff;
+            padding: 50px 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 20px 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+    </style>
+    <style>
+    body {
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #chat-container {
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    #chat-log {
+      background-color: #f9f9f9;
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    #user-input {
+      border-radius: 8px;
+    }
+
+    button {
+      border-radius: 8px;
+    }
+
+    footer {
+      margin-top: 30px;
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+<!-- Advanced Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow-lg sticky-top" style="background-color: #064420; transition: background-color 0.3s ease;">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-white" href="#" style="font-size: 1.5rem;">
+            🌍 TravelTrek
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto gap-2">
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold px-3 py-2 rounded hover-nav" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold px-3 py-2 rounded hover-nav" href="#explore">Explore Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold px-3 py-2 rounded hover-nav" href="#itinerary">Build Your Itinerary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold px-3 py-2 rounded hover-nav" href="#itinerary">Book Your Trip</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold px-3 py-2 rounded hover-nav" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold px-3 py-2 rounded hover-nav" href="register.html">Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Additional CSS for hover effect -->
+<style>
+    .hover-nav:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.25);
+        border-radius: 0.375rem;
+    }
+
+    @media (max-width: 991px) {
+        .navbar-nav {
+            text-align: center;
+        }
+    }
+</style>
+
+
+<!-- Hero Section -->
+<header class="hero text-center text-white" style="background: linear-gradient(rgba(0, 80, 50, 0.7), rgba(0, 80, 50, 0.7)), url('assets/hero-bg.jpg') no-repeat center center / cover; padding: 100px 0;">
+    <div class="container p-5 rounded" style="
+    min-height: 400px;    
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/Traveltreckpic.jpeg') no-repeat center center / cover;
+        background-size: 150%;
+        border: 2px solid rgba(255,255,255,0.2);
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    ">
+    <h1 class="display-4 fw-bold" style="
+    background: linear-gradient(to right, #8ef0a5, #03dd19);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+">
+     Plan Your Next Adventure with TravelTrek
+</h1>
+
+<p class="lead text-white" style="
+    font-size: 1.15rem;
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+">
+    Explore destinations, create itineraries, and book your trip—all in one place. <br>
+    Whether you're seeking thrilling adventures, peaceful retreats, cultural escapes, or memorable family vacations, <strong>TravelTrek</strong> is your all-in-one travel companion. <br>
+    Discover stunning destinations, build personalized itineraries, and book your perfect trip with ease. <br>
+    <span style="font-weight: bold; color: #ffc107;">Start your journey today</span> and turn your dream vacation into reality!
+</p>
+
+    </div>
+</header>
+
+    <!-- Destination Explorer Section -->
+    <section id="explore">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" style="
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #026f30, #2f6e09);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+">
+    ✈️ Explore Destinations
+</h2>
+
+            <div class="row">
+                <!-- Adventure and Relaxation -->
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <img src="assets\adventuretrip.jpg" class="card-img-top" alt="Adventure" style="height: 400px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, #00bfa5, #1de9b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+">
+    🧗 Adventure
+</h5>
+
+<p class="card-text" style="
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+">
+    Explore thrilling adventure destinations for adrenaline seekers.
+</p>
+
+                            <a href="adv.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 d-flex flex-column">
+                        <img src="assets/relaxation.jpg" class="card-img-top" alt="Relaxation" style="height: 400px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, #00bfa5, #1de9b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+">
+    🧘 Relaxation
+</h5>
+
+<p class="card-text" style="
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+">
+    Discover tranquil spots perfect for relaxation and rejuvenation.
+</p>
+
+                            <a href="relax.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Culture and Family Trip -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 d-flex flex-column">
+                        <img src="assets/cultural2.jpg" class="card-img-top" alt="Culture" style="height: 400px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, #00bfa5, #1de9b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+">
+    🏛️ Culture
+</h5>
+
+<p class="card-text" style="
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+">
+    Immerse yourself in rich cultural destinations full of history and art.
+</p>
+
+                            <a href="culture.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 d-flex flex-column">
+                        <img src="assets/family.jpg" class="card-img-top" alt="Family Trip" style="height: 400px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold" style="
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, #00bfa5, #1de9b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+">
+    👨‍👩‍👧‍👦 Family Trip
+</h5>
+
+<p class="card-text" style="
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+">
+    Find family-friendly destinations perfect for bonding and fun.
+</p>
+
+                            <a href="family.html" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Itinerary Builder Section -->
+    <section id="itinerary">
+        <div class="container">
+            <h2 class="text-center mb-4">Customise and Reserve Your Plan</h2>
+            <p class="text-center">Easily plan and organize your entire trip with our interactive itinerary builder.</p>
+            <div class="text-center">
+                <a href="ind.html" button>Customise</a>
+                <a href="bookpackage.php" button>Book now</a>
+            </div>
+        </div>
+    </section>
+<!-- Chatbot UI -->
+<div id="chatbot-toggle" onclick="document.getElementById('chat-container').style.display='block'" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #064420;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+">
+💬
+</div>
+
+<div id="chat-container" style="
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+">
+
+    <div id="chat-log" style="height: 200px; overflow-y: auto; margin-bottom: 10px; border: 1px solid #eee; padding: 10px; background: #f9f9f9;"></div>
+    <div class="input-group">
+        <input type="text" id="user-input" class="form-control" placeholder="Ask me something...">
+        <button class="btn btn-success" onclick="sendMessage()">Send</button>
+    </div>
+    <div class="text-end mt-2">
+        <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('chat-container').style.display='none'">Close</button>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+<script>
+  function sendMessage() {
+    const userInput = document.getElementById("user-input");
+    const chatLog = document.getElementById("chat-log");
+
+    const userMessage = userInput.value.trim();
+    if (userMessage === "") return;
+
+    // Append user's message
+    const userDiv = document.createElement("div");
+    userDiv.innerHTML = `<strong>You:</strong> ${userMessage}`;
+    chatLog.appendChild(userDiv);
+
+    // Clear the input field
+    userInput.value = "";
+
+    // Dummy bot response (you can replace with AI/API response later)
+    const botResponse = getBotResponse(userMessage);
+
+    const botDiv = document.createElement("div");
+    botDiv.innerHTML = `<strong>Bot:</strong> ${botResponse}`;
+    chatLog.appendChild(botDiv);
+
+    // Auto-scroll to the bottom
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  // Simple mock chatbot logic (customize this part)
+  function getBotResponse(input) {
+  input = input.toLowerCase();
+
+  const responses = {
+    hello: [
+      "Hi there! Ready for an adventure?",
+      "Hello! Looking for your next trek?",
+      "Hey traveler! How can I assist you today?"
+    ],
+    hai: [
+      "Hi there! Ready for an adventure?",
+      "Hello! Looking for your next trek?",
+      "Hey traveler! How can I assist you today?"
+    ],
+    hii: [
+      "Hi there! Ready for an adventure?",
+      "Hello! Looking for your next trek?",
+      "Hey traveler! How can I assist you today?"
+    ],
+    book: [
+      "Sure, where would you like to go?",
+      "Booking? I can help with that. Solo or group trek?",
+      "Great! Let’s get your trip planned. What's your destination?"
+    ],
+    bye: [
+      "Goodbye! Safe travels!",
+      "See you soon on your next adventure!",
+      "Have a great journey! Don't forget to share your memories."
+    ],
+    bai: [
+      "Goodbye! Safe travels!",
+      "See you soon on your next adventure!",
+      "Have a great journey! Don't forget to share your memories."
+    ],
+    bii: [
+      "Goodbye! Safe travels!",
+      "See you soon on your next adventure!",
+      "Have a great journey! Don't forget to share your memories."
+    ],
+    destination: [
+      "We have amazing treks to the Himalayas, Sahyadris, and Western Ghats!",
+      "Looking for mountains, beaches, or forests?",
+      "Tell me your adventure level – beginner or expert – and I’ll suggest places."
+    ],
+    weather: [
+      "Let me check the weather for your chosen destination.",
+      "It’s always good to pack for unexpected rain in the hills!",
+      "The forecast looks perfect for trekking – cool and dry!"
+    ],
+    packing: [
+      "Don't forget essentials like water bottles, warm clothing, and a first-aid kit!",
+      "Need a packing list? I’ve got you covered.",
+      "Pack light but smart – layers, snacks, and good shoes are key."
+    ],
+    safety: [
+      "Always travel with a buddy or let someone know your route!",
+      "Our treks include trained guides and safety kits.",
+      "Stay hydrated, watch your step, and follow your guide's instructions."
+    ],
+    food: [
+      "You’ll be served delicious local food on most treks!",
+      "Have dietary preferences? Let us know in advance.",
+      "We ensure hygienic and energizing meals during the trek."
+    ],
+    cost: [
+      "Prices vary by destination and duration. Want me to list options?",
+      "We have budget and premium packages – what’s your preference?",
+      "Group bookings get discounts. Planning with friends?"
+    ],
+    guide: [
+      "All our treks come with experienced local guides.",
+      "You’ll be in good hands with our certified trekking leaders.",
+      "Guides are trained in first aid and local knowledge."
+    ],
+    equipment: [
+      "Basic gear is provided, but you can bring your own if preferred.",
+      "Need a tent, sleeping bag, or trekking pole? We’ve got rentals too.",
+      "Sturdy shoes and a good backpack are must-haves!"
+    ],
+    experience: [
+      "No prior trekking experience? No problem – we have beginner-friendly treks.",
+      "We cater to all levels, from first-timers to seasoned hikers.",
+      "Let me know your fitness level and I’ll suggest the right trek."
+    ]
+  };
+
+  // Helper to pick random response from array
+  function randomResponse(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  if (input.includes("hello")) return randomResponse(responses.hello);
+  if (input.includes("hai")) return randomResponse(responses.hai);
+  if (input.includes("hii")) return randomResponse(responses.hii);
+  if (input.includes("book")) return randomResponse(responses.book);
+  if (input.includes("bye")) return randomResponse(responses.bye);
+  if (input.includes("bai")) return randomResponse(responses.bai);
+  if (input.includes("bii")) return randomResponse(responses.bii);
+
+  if (input.includes("destination") || input.includes("where to go")) return randomResponse(responses.destination);
+  if (input.includes("weather")) return randomResponse(responses.weather);
+  if (input.includes("pack") || input.includes("packing")) return randomResponse(responses.packing);
+  if (input.includes("safety") || input.includes("safe")) return randomResponse(responses.safety);
+  if (input.includes("food") || input.includes("meal")) return randomResponse(responses.food);
+  if (input.includes("cost") || input.includes("price") || input.includes("budget")) return randomResponse(responses.cost);
+  if (input.includes("guide")) return randomResponse(responses.guide);
+  if (input.includes("equipment") || input.includes("gear")) return randomResponse(responses.equipment);
+  if (input.includes("experience") || input.includes("beginner") || input.includes("level")) return randomResponse(responses.experience);
+
+  return "I'm sorry, I didn't understand that. Can you try asking differently?";
+}
+
+</script>
+
+</body>
+
+</html>

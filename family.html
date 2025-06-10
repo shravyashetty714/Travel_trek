@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relaxation Places in India</title>
+    <style>
+        /* Reset styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #053b2e;
+            color: #E1EAD9;
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid #0C7A6F;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #D9F2E6;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #BFD3C6;
+        }
+
+        /* Container styling */
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Card styling */
+        .relaxation-card {
+            background-color: #0A675F;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .relaxation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .relaxation-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .relaxation-details {
+            padding: 1.5rem;
+        }
+
+        .relaxation-title {
+            font-size: 1.8rem;
+            color: #D9F2E6;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .relaxation-meta,
+        .relaxation-description {
+            font-size: 1rem;
+            color: #E1EAD9;
+            margin-bottom: 1rem;
+        }
+
+        .relaxation-meta span {
+            display: inline-block;
+            margin-right: 10px;
+            color: #BFD3C6;
+        }
+
+        .relaxation-price {
+            font-size: 1.3rem;
+            color: #D9F2E6;
+            font-weight: bold;
+        }
+
+        .relaxation-highlight {
+            color: #E1EAD9;
+            font-weight: bold;
+        }
+
+        /* Map styling */
+        .map {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        /* Responsive font and layout adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .relaxation-title {
+                font-size: 1.4rem;
+            }
+
+            .relaxation-price {
+                font-size: 1.1rem;
+            }
+
+            header p,
+            .relaxation-meta,
+            .relaxation-description {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Family Getaways in India for Unforgettable Memories</h1>
+        <p>Experience Peace and Serenity</p>
+    </header>
+
+    <!-- Replace your existing .container div with this -->
+
+<div class="container">
+    <!-- Jaipur Card -->
+    <div class="relaxation-card">
+        <img src="assets/Jaipur.jpg" alt="Jaipur City Palace" style="height: 200px; object-fit: cover;">
+        <div class="relaxation-details">
+            <h2 class="relaxation-title">Jaipur – Royal Heritage</h2>
+            <div class="relaxation-meta">
+                <span><strong>Location:</strong> Jaipur, Rajasthan, India</span>
+                <span><strong>Duration:</strong> 3-4 days</span>
+            </div>
+            <p class="relaxation-description">
+                Explore forts, palaces, and vibrant markets in Jaipur, a royal destination perfect for a cultural family trip.
+            </p>
+            <div id="map1" class="map"></div>
+        </div>
+    </div>
+
+    <!-- Mysore Card -->
+    <div class="relaxation-card">
+        <img src="assets/mysorepalace.jpeg" alt="Mysore Palace" style="height: 200px; object-fit: cover;">
+        <div class="relaxation-details">
+            <h2 class="relaxation-title">Mysore – Palaces and Zoos</h2>
+            <div class="relaxation-meta">
+                <span><strong>Location:</strong> Mysore, Karnataka, India</span>
+                <span><strong>Duration:</strong> 2-3 days</span>
+            </div>
+            <p class="relaxation-description">
+                Discover Mysore's majestic palace, gardens, and the famous zoo—fun and educational for the entire family.
+            </p>
+            <div id="map2" class="map"></div>
+        </div>
+    </div>
+
+    <!-- Ooty Card -->
+    <div class="relaxation-card">
+        <img src="assets/ootygardens.jpeg" alt="Ooty" style="height: 200px; object-fit: cover;">
+        <div class="relaxation-details">
+            <h2 class="relaxation-title">Ooty – Hill Station Charm</h2>
+            <div class="relaxation-meta">
+                <span><strong>Location:</strong> Ooty, Tamil Nadu, India</span>
+                <span><strong>Duration:</strong> 2-3 days</span>
+            </div>
+            <p class="relaxation-description">
+                Ride the Nilgiri toy train, visit botanical gardens, and enjoy scenic lake boating with your family.
+            </p>
+            <div id="map3" class="map"></div>
+        </div>
+    </div>
+
+    <!-- Shimla Card -->
+    <div class="relaxation-card">
+        <img src="assets/shimlamallroad.avif" alt="Shimla" style="height: 200px; object-fit: cover;">
+        <div class="relaxation-details">
+            <h2 class="relaxation-title">Shimla – Colonial Family Escape</h2>
+            <div class="relaxation-meta">
+                <span><strong>Location:</strong> Shimla, Himachal Pradesh, India</span>
+                <span><strong>Duration:</strong> 3-4 days</span>
+            </div>
+            <p class="relaxation-description">
+                Enjoy toy train rides, Mall Road walks, and snow adventures in Shimla—ideal for kids and adults alike.
+            </p>
+            <div id="map4" class="map"></div>
+        </div>
+    </div>
+
+    <!-- Darjeeling Card -->
+    <div class="relaxation-card">
+        <img src="assets/darjeelingtoytrain.webp" alt="Darjeeling" style="height: 200px; object-fit: cover;">
+        <div class="relaxation-details">
+            <h2 class="relaxation-title">Darjeeling – Tea Gardens and Views</h2>
+            <div class="relaxation-meta">
+                <span><strong>Location:</strong> Darjeeling, West Bengal, India</span>
+                <span><strong>Duration:</strong> 2-3 days</span>
+            </div>
+            <p class="relaxation-description">
+                Visit tea estates, the Himalayan zoo, and enjoy panoramic views of Kanchenjunga with your family.
+            </p>
+            <div id="map5" class="map"></div>
+        </div>
+    </div>
+
+    <!-- Delhi Card -->
+    <div class="relaxation-card">
+        <img src="assets/delhiredfort.jpeg" alt="Delhi Red Fort" style="height: 200px; object-fit: cover;">
+        <div class="relaxation-details">
+            <h2 class="relaxation-title">Delhi – History and Culture</h2>
+            <div class="relaxation-meta">
+                <span><strong>Location:</strong> Delhi, India</span>
+                <span><strong>Duration:</strong> 2-3 days</span>
+            </div>
+            <p class="relaxation-description">
+                From Red Fort to India Gate, Delhi offers a mix of historic sites, museums, and parks for the whole family.
+            </p>
+            <div id="map6" class="map"></div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Google Maps API -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAQKfyvLqPET4bemv12H1J92jOnS0-DyA&callback=initMap">
+</script>
+
+<script>
+    function initMap() {
+        const locations = [
+            { id: 'map1', coords: { lat: 26.9124, lng: 75.7873 } }, // Jaipur
+            { id: 'map2', coords: { lat: 12.2958, lng: 76.6394 } }, // Mysore
+            { id: 'map3', coords: { lat: 11.4064, lng: 76.6932 } }, // Ooty
+            { id: 'map4', coords: { lat: 31.1048, lng: 77.1734 } }, // Shimla
+            { id: 'map5', coords: { lat: 27.0360, lng: 88.2627 } }, // Darjeeling
+            { id: 'map6', coords: { lat: 28.6139, lng: 77.2090 } }, // Delhi
+        ];
+
+        locations.forEach(loc => {
+            const map = new google.maps.Map(document.getElementById(loc.id), {
+                zoom: 10,
+                center: loc.coords
+            });
+            new google.maps.Marker({
+                position: loc.coords,
+                map: map
+            });
+        });
+    }
+</script>
+
+</body>
+
+</html>

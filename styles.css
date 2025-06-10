@@ -1,0 +1,159 @@
+/* Global Green Theme */
+:root {
+    --primary-green: #014421;
+    --secondary-green: #02735E;
+    --accent-green: #00A676;
+    --light-green: #90EE90;
+    --background-green: #E8F5E9;
+    --text-dark: #1B4332;
+    --text-light: #f9fff9;
+}
+
+/* General */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-green);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-green) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand, .nav-link {
+    color: var(--text-light) !important;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-green) !important;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(1, 68, 33, 0.7), rgba(1, 68, 33, 0.7)), url('assets/hero-bg.jpg') center/cover no-repeat;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    background: linear-gradient(90deg, var(--light-green), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* Section Titles */
+section h2 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 40px;
+    background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Explore Cards */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 128, 0, 0.2);
+}
+
+.card-title {
+    color: var(--primary-green);
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--secondary-green);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-green);
+}
+
+/* Itinerary Section */
+#itinerary {
+    background-color: var(--primary-green);
+    color: var(--text-light);
+    padding: 70px 0;
+}
+
+#itinerary p {
+    font-size: 1.2rem;
+}
+
+#itinerary .text-center a {
+    margin: 10px;
+    display: inline-block;
+    background-color: var(--accent-green);
+    color: var(--text-light);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#itinerary .text-center a:hover {
+    background-color: #00C897;
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-green);
+    color: var(--text-light);
+    padding: 20px 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    section h2 {
+        font-size: 2rem;
+    }
+}

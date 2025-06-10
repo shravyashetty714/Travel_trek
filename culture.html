@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Places of India</title>
+    <style>
+        /* Reset styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4; /* Light beige */
+            color: #333; /* Dark text color */
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #053b2e; /* Rich maroon */
+            color: #FFF8F0; /* Light color */
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .place-card {
+            background-color: #0A675F; /* Light background */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .place-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .place-card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .place-details {
+            padding: 1.5rem;
+        }
+
+        .place-title {
+            font-size: 1.8rem;
+            color: #D9F2E6; /* Title highlight */
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .place-meta,
+        .place-description {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #E1EAD9;
+        }
+
+        .place-highlight {
+            font-weight: bold;
+            color: #E1EAD9;
+        }
+
+        .map {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .place-title {
+                font-size: 1.5rem;
+            }
+
+            .place-meta,
+            .place-description {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Cultural Gems of India</h1>
+        <p>Discover the heritage and culture across different states of India.</p>
+    </header>
+
+    <div class="container">
+        <!-- Taj Mahal -->
+        <div class="place-card">
+            <img src="assets/tajmahal.jpeg" alt="Taj Mahal" style="height: 200px; object-fit: cover;">
+            <div class="place-details">
+                <h2 class="place-title">Taj Mahal</h2>
+                <p class="place-meta"><strong>State:</strong> Uttar Pradesh</p>
+                <p class="place-description">
+                    The Taj Mahal, a UNESCO World Heritage site, is an iconic symbol of love and Mughal architecture.
+                </p>
+                <p><span class="place-highlight">Highlights:</span> Marble domes, intricate carvings, and Mughal gardens</p>
+                <div id="map1" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Sun Temple -->
+        <div class="place-card">
+            <img src="assets/suntemple.jpeg" alt="Sun Temple" style="height: 200px; object-fit: cover;">
+            <div class="place-details">
+                <h2 class="place-title">Sun Temple</h2>
+                <p class="place-meta"><strong>State:</strong> Odisha</p>
+                <p class="place-description">
+                    The Konark Sun Temple is a 13th-century architectural marvel dedicated to the Sun God.
+                </p>
+                <p><span class="place-highlight">Highlights:</span> Chariot design, intricate carvings, and spiritual significance</p>
+                <div id="map2" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Hampi -->
+        <div class="place-card">
+            <img src="assets/hampi.jpeg" alt="Hampi" style="height: 200px; object-fit: cover;">
+            <div class="place-details">
+                <h2 class="place-title">Hampi</h2>
+                <p class="place-meta"><strong>State:</strong> Karnataka</p>
+                <p class="place-description">
+                    Hampi is a UNESCO World Heritage site known for its Vijayanagara Empire ruins and cultural richness.
+                </p>
+                <p><span class="place-highlight">Highlights:</span> Temples, royal enclosures, and boulder landscapes</p>
+                <div id="map3" class="map"></div>
+            </div>
+        </div>
+
+        <!-- Jaipur City Palace -->
+        <div class="place-card">
+            <img src="assets/citypalace.jpeg" alt="City Palace Jaipur" style="height: 200px; object-fit: cover;">
+            <div class="place-details">
+                <h2 class="place-title">City Palace</h2>
+                <p class="place-meta"><strong>State:</strong> Rajasthan</p>
+                <p class="place-description">
+                    The City Palace in Jaipur is a blend of Mughal and Rajput architecture, reflecting the royal heritage of Rajasthan.
+                </p>
+                <p><span class="place-highlight">Highlights:</span> Museums, courtyards, and intricate architecture</p>
+                <div id="map4" class="map"></div>
+            </div>
+        </div>
+          <!-- Varnasi -->
+    <div class="place-card">
+        <img src="assets/varanasi.webp" alt="City Palace Jaipur" style="height: 200px; object-fit: cover;">
+        <div class="place-details">
+            <h2 class="place-title">Varanasi</h2>
+            <p class="place-meta"><strong>State:</strong>Uttar Pradesh</p>
+            <p class="place-description">
+                The city offers an immersive experience of Hindu rituals, music, and traditional crafts, making it a must-visit for anyone interested in India's deep-rooted cultural and spiritual heritage.
+            </p>
+            <p><span class="place-highlight">Highlights:</span>Ganga Aarti, ancient temples, and labyrinthine ghats</p>
+            <div id="map5" class="map"></div>
+        </div>
+    </div>
+    <!-- Fort kochi -->
+<div class="place-card">
+    <img src="assets/kochifort.jpg" alt="City Palace Jaipur" style="height: 200px; object-fit: cover;">
+    <div class="place-details">
+        <h2 class="place-title">Fort Kochi</h2>
+        <p class="place-meta"><strong>State:</strong>Kerala</p>
+        <p class="place-description">
+            Its colonial architecture, traditional Kathakali performances, and vibrant art scene make it a unique destination for cultural exploration.
+        </p>
+        <p><span class="place-highlight">Highlights:</span> cultures, blending Portuguese, Dutch and British</p>
+        <div id="map6" class="map"></div>
+    </div>
+</div>
+</div>
+</div>
+    
+
+ 
+
+    <!-- Google Maps API -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAQKfyvLqPET4bemv12H1J92jOnS0-DyA&callback=initMap">
+</script>
+<script>
+    function initMap() {
+        const locations = [
+            { id: 'map1', coords: { lat: 27.1751, lng: 78.0421 } }, // Taj Mahal
+            { id: 'map2', coords: { lat: 19.8876, lng: 86.0945 } }, // Sun Temple, Konark
+            { id: 'map3', coords: { lat: 15.3350, lng: 76.4600 } }, // Hampi
+            { id: 'map4', coords: { lat: 24.5760, lng: 73.6836 } }, // City Palace, Udaipur
+            { id: 'map5', coords: { lat: 25.3176, lng: 82.9739 } }, // Varanasi
+            { id: 'map6', coords: { lat: 9.9633, lng: 76.2421 } },  // Fort Kochi
+        ];
+
+        locations.forEach(loc => {
+            const map = new google.maps.Map(document.getElementById(loc.id), {
+                zoom: 10,
+                center: loc.coords
+            });
+            new google.maps.Marker({
+                position: loc.coords,
+                map: map
+            });
+        });
+    }
+</script>
+
+
+</body>
+
+</html>

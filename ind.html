@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveler's Record Form</title>
+    <style>
+        /* Custom Color Palette */
+        :root {
+            --primary-color: #6a7c7a;
+            --secondary-color: rgb(6, 97, 66);
+            --tertiary-color: rgb(11, 96, 92);
+            --accent-color: #0A675F;
+            --highlight-color: rgb(169, 240, 233);
+            --background-color: rgb(47, 96, 9);
+            --white-color: #fff;
+            --light-green: #90EE90;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: var(--white-color); /* White text color */
+        }
+
+        /* Container for the form */
+        .container {
+            background-color: var(--secondary-color);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 50px auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--light-green); /* Light green for header */
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); /* Optional shadow */
+            border-bottom: 3px solid var(--highlight-color); /* Bottom border with highlight color */
+            padding-bottom: 10px;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        input[type="text"], input[type="date"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        button {
+            background-color: var(--tertiary-color);
+            border: none;
+            font-weight: 600;
+            border-radius: 30px;
+            padding: 12px;
+            font-size: 1.2rem;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--highlight-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Traveler's Travel Record</h1>
+        <form action="submit.php" method="POST">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" name="destination" required>
+
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date" required>
+
+            <label for="end_date">End Date:</label>
+            <input type="date" id="end_date" name="end_date" required>
+
+            <label for="notes">Additional Notes:</label>
+            <textarea id="notes" name="notes"></textarea>
+
+            <button type="submit">Submit Travel Record</button>
+        </form>
+    </div>
+
+</body>
+</html>
